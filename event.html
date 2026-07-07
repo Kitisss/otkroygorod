@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мероприятие — Открой город</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="10.5" stroke="var(--text)" stroke-width="2.4"/>
+        <path d="M4 17L13 8" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M7.5 19.5L15.5 9.5" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span>ОТКРОЙ ГОРОД</span>
+    </a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="events.html" class="active">Мероприятия</a>
+      <a href="attractions.html">Достопримечательности</a>
+      <a href="partners.html">Партнёры</a>
+    </nav>
+    <div class="header-actions">
+      <button class="nav-toggle" id="navToggle" title="Меню">☰</button>
+      <button class="theme-toggle" id="themeToggle" title="Сменить тему">🌙</button>
+      <a href="cabinet.html" class="cabinet-btn"><span class="dot" id="headerBonusDot">0</span> Кабинет</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="detail-wrap" id="eventDetailContent"></div>
+</main>
+
+<footer>
+  © 2026 Открой город — цифровая платформа городской жизни. Демонстрационная версия.
+  <div class="footer-support">Хотите разместить мероприятие или стать партнёром проекта? Пишите на <a href="mailto:0912katesss@gmail.com">0912katesss@gmail.com</a></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/render.js"></script>
+<script src="js/common.js"></script>
+<script src="js/page-event.js"></script>
+</body>
+</html>

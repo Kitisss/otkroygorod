@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Партнёры — Открой город</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .partner-card{
+    max-width:820px; margin:0 auto 24px; background:var(--bg-elevated); border:1px solid var(--border);
+    border-radius:var(--radius-xl); padding:32px; display:flex; flex-direction:column; gap:16px;
+  }
+  .partner-head{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .partner-avatar{
+    width:56px; height:56px; border-radius:50%; background:var(--bg-elevated-2); border:2px solid var(--accent);
+    display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0;
+  }
+  .partner-title{font-family:var(--font-display); font-size:20px; font-weight:800; text-transform:uppercase;}
+  .partner-tagline{color:var(--text-muted); font-size:13px; font-style:italic;}
+  .partner-since{color:var(--text-muted); font-size:12px; font-family:var(--font-mono); margin-left:auto;}
+  .partner-achievement{
+    background:var(--bg-elevated-2); border:1px dashed var(--accent); border-radius:var(--radius-lg);
+    padding:16px 20px; font-size:13px; line-height:1.6;
+  }
+  .partner-achievement b{color:var(--accent);}
+  .partner-desc{color:var(--text-muted); font-size:13px; line-height:1.6;}
+  .partner-repertoire{display:flex; flex-wrap:wrap; gap:8px;}
+  .repertoire-pill{
+    background:var(--bg-elevated-2); border:1px solid var(--border); border-radius:999px;
+    padding:6px 14px; font-size:12px; color:var(--text-muted);
+  }
+  .partner-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px;}
+  .partner-actions a, .partner-actions .bonus-pill{
+    display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:13px;
+    padding:11px 22px; border-radius:999px;
+  }
+  .partner-btn-primary{background:var(--accent); color:var(--accent-text);}
+  .partner-btn-secondary{background:var(--bg-elevated-2); color:var(--text); border:1px solid var(--border);}
+  .become-partner{
+    max-width:820px; margin:36px auto 0; background:var(--bg-elevated); border:1px dashed var(--border);
+    border-radius:var(--radius-xl); padding:28px 32px; text-align:center;
+  }
+  .become-partner h3{font-family:var(--font-display); font-size:16px; text-transform:uppercase; margin-bottom:10px;}
+  .become-partner p{color:var(--text-muted); font-size:13px; line-height:1.7; margin-bottom:6px;}
+  .become-partner ul{color:var(--text-muted); font-size:13px; line-height:1.8; text-align:left; max-width:520px; margin:14px auto; padding-left:20px;}
+  .become-partner a.mail-btn{
+    display:inline-flex; align-items:center; gap:8px; margin-top:10px; background:var(--accent); color:var(--accent-text);
+    font-weight:700; font-size:13px; padding:12px 26px; border-radius:999px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="10.5" stroke="var(--text)" stroke-width="2.4"/>
+        <path d="M4 17L13 8" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M7.5 19.5L15.5 9.5" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <span>ОТКРОЙ ГОРОД</span>
+    </a>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="events.html">Мероприятия</a>
+      <a href="attractions.html">Достопримечательности</a>
+      <a href="partners.html" class="active">Партнёры</a>
+    </nav>
+    <div class="header-actions">
+      <button class="nav-toggle" id="navToggle" title="Меню">☰</button>
+      <button class="theme-toggle" id="themeToggle" title="Сменить тему">🌙</button>
+      <a href="cabinet.html" class="cabinet-btn"><span class="dot" id="headerBonusDot">0</span> Кабинет</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section" style="padding-top:44px;">
+    <div class="section-head">
+      <h2>Партнёры проекта</h2>
+      <p>Локальные организации, которые дарят бонусы и билеты посетителям «Открой город».</p>
+    </div>
+    <div id="partnersList"></div>
+
+    <div class="partner-card" style="border-style:dashed; border-color:var(--accent);">
+      <div class="partner-title" style="text-transform:none; font-size:17px;">📩 Хотите разместить своё мероприятие на платформе?</div>
+      <div class="partner-desc">
+        Если вы представляете музей, театр, фестиваль или локальный бизнес и хотите попасть в каталог
+        «Открой город» — пришлите нам описание мероприятия, даты и условия начисления бонусов.
+        Мы согласуем оформление карточки и подключим QR-код для начисления бонусов посетителям на месте.
+      </div>
+      <div class="partner-actions">
+        <a href="mailto:0912katesss@gmail.com?subject=Разместить%20мероприятие%20на%20Открой%20город" class="partner-btn-primary">✉️ Написать в поддержку</a>
+      </div>
+      <div class="partner-tagline" style="font-style:normal;">0912katesss@gmail.com — ответим в течение 1–2 рабочих дней.</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Открой город — цифровая платформа городской жизни. Демонстрационная версия.
+  <div class="footer-support">Хотите разместить мероприятие или стать партнёром проекта? Пишите на <a href="mailto:0912katesss@gmail.com">0912katesss@gmail.com</a></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/common.js"></script>
+<script src="js/page-partners.js"></script>
+</body>
+</html>
