@@ -88,23 +88,32 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('qrGrid');
-    const activeEvents = EVENTS.filter(e => e.status !== 'soon' && e.bonus);
-    const activeSights = SIGHTS.filter(s => s.qrEnabled && s.bonus);
-    const items = [...activeEvents, ...activeSights];
-    items.forEach(ev => {
-      const url = buildScanUrl(ev.id);
-      const card = document.createElement('div');
-      card.className = 'qr-card';
-      card.innerHTML = `
-        <div class="qr-card-title">${ev.title}</div>
-        <div class="qr-card-bonus">+${ev.bonus} ⭐ за визит</div>
-        <div class="qr-canvas-wrap" id="qr-${ev.id}"></div>
-        <div class="qr-card-link">${url}</div>
-      `;
-      grid.appendChild(card);
-      new QRCode(document.getElementById('qr-' + ev.id), {
-        text: url, width: 168, height: 168,
-        colorDark: '#0b0f0b', colorLight: '#ffffff'
+    CITIES.forEach(cityMeta => {
+      const activeEvents = EVENTS.filter(e => e.city === cityMeta.id && e.status !== 'soon' && e.bonus);
+      const activeSights = SIGHTS.filter(s => s.city === cityMeta.id && s.qrEnabled && s.bonus);
+      const items = [...activeEvents, ...activeSights];
+      if(!items.length) return;
+
+      const cityHeading = document.createElement('div');
+      cityHeading.style.cssText = 'grid-column:1/-1; font-family:var(--font-display); font-size:16px; font-weight:800; text-transform:uppercase; margin:24px 0 4px;';
+      cityHeading.textContent = cityMeta.label;
+      grid.appendChild(cityHeading);
+
+      items.forEach(ev => {
+        const url = buildScanUrl(ev.id);
+        const card = document.createElement('div');
+        card.className = 'qr-card';
+        card.innerHTML = `
+          <div class="qr-card-title">${ev.title}</div>
+          <div class="qr-card-bonus">+${ev.bonus} ⭐ за визит</div>
+          <div class="qr-canvas-wrap" id="qr-${ev.id}"></div>
+          <div class="qr-card-link">${url}</div>
+        `;
+        grid.appendChild(card);
+        new QRCode(document.getElementById('qr-' + ev.id), {
+          text: url, width: 168, height: 168,
+          colorDark: '#0b0f0b', colorLight: '#ffffff'
+        });
       });
     });
   });

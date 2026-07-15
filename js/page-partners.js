@@ -23,5 +23,14 @@ function partnerCardHTML(p){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('partnersList').innerHTML = PARTNERS.map(partnerCardHTML).join('');
+  const cityMeta = currentCityMeta();
+  const list = document.getElementById('partnersList');
+  if(cityMeta.status === 'soon'){
+    list.innerHTML = cityInDevelopmentHTML(cityMeta);
+    return;
+  }
+  const partners = PARTNERS.filter(p => p.city === cityMeta.id);
+  list.innerHTML = partners.length
+    ? partners.map(partnerCardHTML).join('')
+    : `<div class="empty-state" style="padding:40px 20px;">Партнёров в городе «${cityMeta.label}» пока нет — но мы уже ведём переговоры с локальным бизнесом.</div>`;
 });

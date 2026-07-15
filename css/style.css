@@ -82,6 +82,34 @@ nav a.active{color:var(--accent-text); background:var(--accent);}
   padding:8px 16px 8px 8px; border-radius:999px; font-size:13px; font-weight:600;
 }
 .cabinet-btn .dot{width:22px; height:22px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--accent-text); font-weight:800;}
+
+.city-switch{position:relative;}
+.city-toggle{
+  display:flex; align-items:center; gap:6px;
+  background:var(--bg-elevated); border:1px solid var(--border);
+  padding:8px 14px; border-radius:999px; font-size:13px; font-weight:600; color:var(--text);
+}
+.city-toggle .chevron{font-size:9px; color:var(--text-muted); transition:transform .2s ease;}
+.city-switch.open .chevron{transform:rotate(180deg);}
+.city-dropdown{
+  display:none; position:absolute; top:calc(100% + 8px); left:0; min-width:220px; z-index:200;
+  background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-md);
+  padding:6px; box-shadow:0 16px 28px -12px rgba(0,0,0,0.4);
+}
+.city-switch.open .city-dropdown{display:block;}
+.city-option{
+  display:flex; align-items:center; justify-content:space-between; gap:8px; width:100%;
+  padding:10px 12px; border-radius:var(--radius-sm); font-size:13px; font-weight:600; color:var(--text);
+  text-align:left; background:none;
+}
+.city-option:hover{background:var(--bg-elevated-2);}
+.city-option.active{color:var(--accent-text); background:var(--accent);}
+.city-soon-tag{
+  font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.3px;
+  color:var(--text-muted); background:var(--bg-elevated-2); padding:2px 7px; border-radius:999px;
+}
+.city-option.active .city-soon-tag{color:var(--accent-text); background:rgba(0,0,0,0.15);}
+
 .nav-toggle{
   display:none; width:38px; height:38px; border-radius:50%;
   background:var(--bg-elevated); border:1px solid var(--border);
@@ -98,6 +126,16 @@ nav a.active{color:var(--accent-text); background:var(--accent);}
   nav.nav-open{display:flex;}
   nav a{padding:13px 16px; border-radius:var(--radius-sm); font-size:14px;}
   .nav-toggle{display:flex;}
+  .city-dropdown{left:auto; right:0;}
+}
+@media (max-width: 460px){
+  .header-inner{padding:14px 16px; gap:8px;}
+  .header-actions{gap:6px;}
+  .logo span{font-size:12px;}
+  .city-toggle{padding:7px 10px; font-size:12px;}
+  .city-toggle .chevron{display:none;}
+  .cabinet-btn .cabinet-label{display:none;}
+  .cabinet-btn{padding:8px;}
 }
 
 /* ---------- HERO / ROAD ---------- */

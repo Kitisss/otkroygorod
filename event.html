@@ -28,9 +28,13 @@
       <a href="partners.html">Партнёры</a>
     </nav>
     <div class="header-actions">
+      <div class="city-switch" id="cityToggleWrap">
+        <button class="city-toggle" id="cityToggle">📍 <span id="cityLabel">Пенза</span> <span class="chevron">▾</span></button>
+        <div class="city-dropdown" id="cityDropdown"></div>
+      </div>
       <button class="nav-toggle" id="navToggle" title="Меню">☰</button>
       <button class="theme-toggle" id="themeToggle" title="Сменить тему">🌙</button>
-      <a href="cabinet.html" class="cabinet-btn"><span class="dot" id="headerBonusDot">0</span> Кабинет</a>
+      <a href="cabinet.html" class="cabinet-btn"><span class="dot" id="headerBonusDot">0</span><span class="cabinet-label"> Кабинет</span></a>
     </div>
   </div>
 </header>
@@ -45,6 +49,7 @@
 </footer>
 
 <script src="js/data.js"></script>
+<script src="js/city.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/render.js"></script>
 <script src="js/common.js"></script>
