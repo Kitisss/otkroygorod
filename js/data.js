@@ -11,7 +11,7 @@ const CATEGORIES = ['Все', 'Фестивали', 'Мастер-классы',
 
 /* Список всех мероприятий.
    Чтобы добавить картинку к мероприятию — впиши путь в поле image,
-   например: image: 'assets/images/gastro.jpg'
+   например: image: 'images/gastro.jpg'
    Если поле image не указано — покажется стандартная иконка. */
 const EVENTS = [
   {
@@ -19,7 +19,7 @@ const EVENTS = [
     title: 'Тестовое мероприятие (для сканирования)',
     date: 'Сегодня', time: '12:00', place: 'Стенд проекта',
     bonus: 50, category: 'Фестивали', promoCode: 'DEMO2026', city: 'penza',
-    image: 'assets/images/test.png',
+    image: 'images/test.png',
     desc: 'Отсканируйте QR-код организатора на месте, чтобы увидеть, как система начисляет бонусы за посещение в реальном времени.'
   },
   {
@@ -27,7 +27,7 @@ const EVENTS = [
     title: 'Гастрономический фестиваль',
     date: '11–12 июля', time: 'весь день', place: 'Парк Белинского',
     bonus: 70, category: 'Фестивали', promoCode: 'GASTRO2026', city: 'penza',
-    image: 'assets/images/gastro.jpg',
+    image: 'images/gastro.jpg',
     desc: 'Масштабный культурный гастрофестиваль, продвигающий локальную кухню и региональные продукты. Более 20 заведений общепита, 40 товаропроизводителей эко-ярмарки и 15 представителей локального бизнеса с интерактивными зонами. Ключевое событие — дебют федерального проекта «Битва на кухне-2026».'
   },
   {
@@ -35,7 +35,7 @@ const EVENTS = [
     title: 'Фестиваль «Огни Спутника»',
     date: '24–26 июля', time: 'весь день', place: 'г. Спутник (Пенза)',
     bonus: 60, category: 'Фестивали', promoCode: 'SPUTNIK2026', city: 'penza',
-    image: 'assets/images/ogni.jpg',
+    image: 'images/ogni.jpg',
     desc: 'Седьмой межрегиональный фестиваль «Огни Спутника» — три дня ярких активностей и развлечений для всей семьи. Добраться можно на троллейбусе №105 или автобусе №130, 149.'
   },
   {
@@ -43,7 +43,7 @@ const EVENTS = [
     title: 'Роспись неваляшек: арт-встреча',
     date: 'Скоро', time: 'уточняется', place: 'уточняется',
     bonus: null, category: 'Мастер-классы', status: 'soon', city: 'penza',
-    image: 'assets/images/nevolyashki.jpg',
+    image: 'images/nevolyashki.jpg',
     desc: 'Уникальный мастер-класс по росписи неваляшек — все материалы предоставляются организаторами. Дата следующей встречи будет объявлена дополнительно, следите за обновлениями.'
   },
   {
@@ -51,7 +51,7 @@ const EVENTS = [
     title: 'Спектакль «Покровские ворота»',
     date: '2 ноября', time: 'уточняется', place: 'Пенза',
     bonus: 40, category: 'Театры', promoCode: 'POKROVSKIE2026', city: 'penza',
-    image: 'assets/images/teatr.jpg',
+    image: 'images/teatr.jpg',
     ticketUrl: '#', ticketNote: 'Билеты по ссылке, без комиссии. Сервисный сбор от 800 ₽.',
     desc: 'Классическая постановка «Покровские ворота» на пензенской сцене. Билеты приобретаются заранее по ссылке организатора, бонусы начисляются при подтверждении визита на месте.'
   },
@@ -60,7 +60,7 @@ const EVENTS = [
     title: 'Спектакль «Женитьба Бальзаминова»',
     date: 'Скоро', time: 'уточняется', place: 'ЦКР «Дом офицеров»',
     bonus: null, category: 'Театры', status: 'soon', partner: true, city: 'penza',
-    image: 'assets/images/balzaminov.jpg',
+    image: 'images/balzaminov.jpg',
     desc: 'Этно-водевиль народного студенческого театра ПГУ «Кириллица» по мотивам трилогии А. Н. Островского. В 2026 году спектакль стал победителем окружного фестиваля детских и молодёжных театральных коллективов ПФО «Театральное Приволжье» и получил награду «Лучшее художественное оформление». Дата ближайшего показа в Пензе уточняется — следите за обновлениями.'
   },
 
@@ -70,7 +70,7 @@ const EVENTS = [
     title: 'Warp Fest',
     date: '18 июля', time: '14:00–23:00', place: 'ГЛК «Сок», 3-й квартал, 37, стр. 1',
     bonus: 50, category: 'Фестивали', promoCode: 'WARPFEST2026', city: 'samara',
-    image: 'assets/images/warpfest.jpg',
+    image: 'images/warpfest.jpg',
     desc: 'Автовыставка под открытым небом с бассейном и шезлонгами, сим-рейсинг, диджеи, еда и мерч от партнёров. Вход от 400 ₽.'
   },
   {
@@ -78,7 +78,7 @@ const EVENTS = [
     title: 'Ретрофестиваль «Жигули»',
     date: '18 июля', time: '10:00–18:00', place: 'Парковый комплекс им. К. Г. Сахарова, Тольятти, Южное шоссе, 137',
     bonus: 55, category: 'Фестивали', promoCode: 'ZHIGULI2026', city: 'samara',
-    image: 'assets/images/jiguli.jpg',
+    image: 'images/jiguli.jpg',
     desc: 'Выставка отреставрированных ретроавтомобилей, ретроралли и ретропикник с мастер-классами, интерактивными площадками, бардовской поляной и соревнованиями по картингу. Вход свободный.'
   },
   {
@@ -86,7 +86,7 @@ const EVENTS = [
     title: 'Лимонный девичник',
     date: '19 июля', time: '17:00', place: 'Студия «Души не чаю», ул. Молодогвардейская, 86',
     bonus: 45, category: 'Мастер-классы', promoCode: 'LEMON2026', city: 'samara',
-    image: 'assets/images/lemonDevichnik.jpg',
+    image: 'images/lemonDevichnik.jpg',
     desc: 'Три мастер-класса в итальянской атмосфере с лимонными нотками: кокосовые свечи, браслеты с камнями и живопись текстурной пастой. Есть фотозона и коктейльная. Цена 4500 ₽, с подругой — 4000 ₽ с человека.'
   },
   {
@@ -94,7 +94,7 @@ const EVENTS = [
     title: 'Музыкальное лото на веранде',
     date: '19 июля', time: '19:00', place: 'Бар «В гостях у Любочки», ул. Аврора, 154',
     bonus: 35, category: 'Развлечения', promoCode: 'LOTTO2026', city: 'samara',
-    image: 'assets/images/muz_loto.jpeg',
+    image: 'images/muz_loto.jpeg',
     desc: 'У каждого участника — бланк с песнями, композиции нужно вычёркивать по мере узнавания: угадывать ничего не нужно, тексты выводятся на экран. Билет от 800 ₽.'
   },
   {
@@ -102,7 +102,7 @@ const EVENTS = [
     title: 'День рождения фермы альпак',
     date: '17 июля', time: '12:00', place: 'Ферма «Пара Альпак», с. Сосновское, ул. Счастья, 1',
     bonus: 40, category: 'Развлечения', promoCode: 'ALPACA2026', city: 'samara',
-    image: 'assets/images/paraalpak.jpg',
+    image: 'images/paraalpak.jpg',
     desc: 'Ферме «Пара Альпак» исполняется 3 года: программа от ведущего, диджей-сет, живая музыка у костра, модный показ с животными, ярмарка еды и локальных брендов, мастер-классы и подарки. Билет от 2000 ₽.'
   },
 ];
@@ -125,51 +125,65 @@ const LEVELS = [
 
 /* ============ ДОСТОПРИМЕЧАТЕЛЬНОСТИ ============ */
 /* Категории для фильтра на странице "Достопримечательности" */
-const SIGHT_CATEGORIES = ['Все', 'Музеи', 'Памятники'];
+const SIGHT_CATEGORIES = ['Все', 'Музеи', 'Памятники', 'Театры'];
 
-/* Музеи дают бонус по QR (как мероприятия, поле bonus + qrEnabled: true).
-   Памятники — чисто информационные объекты, без QR и без bonus. */
+/* Четыре точки интерактивной выставки имеют QR без бонусов.
+   После сканирования QR открывается информационное модальное окно. */
 const SIGHTS = [
   {
     id: 'muzey-odnoy-kartiny',
     title: 'Музей одной картины им. Г. В. Мясникова',
-    category: 'Музеи', qrEnabled: true, bonus: 60, city: 'penza',
-    address: 'ул. Кирова, 11', image: 'assets/images/muzei1picture.jpg',
+    category: 'Музеи', qrEnabled: true, city: 'penza',
+    address: 'ул. Кирова, 11', image: 'images/muzei1picture.jpg',
     desc: 'Уникальный музей — единственный в мире в своём роде. Здесь нет постоянной экспозиции: посетителям показывают всего одно живописное полотно, а перед этим — слайд-фильм о художнике и эпохе. По версии журнала Forbes входит в тройку самых необычных музеев мира. Сеанс длится 45 минут, зал рассчитан на 37 мест.'
+  },
+  {
+    id: 'naberezhnaya-sputnika',
+    title: 'Набережная Спутника',
+    category: 'Памятники', qrEnabled: true, city: 'penza',
+    address: 'г. Спутник (Пенза)', image: 'images/sputnik.jpg',
+    desc: 'Благоустроенная набережная в районе Спутник — популярное место для прогулок и отдыха у воды.'
+  },
+  {
+    id: 'dom-ofitserov',
+    title: 'ЦКР «Дом офицеров»',
+    category: 'Театры', qrEnabled: true, city: 'penza',
+    address: 'уточняется', image: 'images/oficery.jpg',
+    desc: 'Центр культуры и досуга, площадка для театральных постановок и городских мероприятий.'
   },
   {
     id: 'kraevedcheskiy-muzey',
     title: 'Пензенский краеведческий музей',
     category: 'Музеи', qrEnabled: true, bonus: 50, city: 'penza',
-    address: 'ул. Красная, 73', image: 'assets/images/Kraevedcheski.jpg',
+    address: 'ул. Красная, 73', image: 'images/Kraevedcheski.jpg',
     desc: 'Один из старейших музеев города с фондом около 140 тысяч экспонатов: археология, этнография, история края. Самый популярный экспонат у посетителей, особенно у детей, — скелет мамонта, найденный недалеко от Пензы.'
   },
   {
     id: 'dom-meyerholda',
     title: 'Музей-театр «Дом Мейерхольда»',
     category: 'Музеи', qrEnabled: true, bonus: 50, city: 'penza',
-    address: 'ул. Кирова, 62', image: 'assets/images/domMierhold.jpg',
+    address: 'ул. Кирова, 62', image: 'images/domMierhold.jpg',
     desc: 'Музей о жизни и творчестве знаменитого уроженца Пензы — режиссёра Всеволода Мейерхольда. Восстановлены интерьеры, собраны редкие документы и фотографии, а на площадке также ставятся экспериментальные спектакли.'
   },
   {
     id: 'pervoposelenec',
     title: 'Памятник «Первопоселенец»',
-    category: 'Памятники', qrEnabled: false, city: 'penza',
-    address: 'набережная реки Суры', image: 'assets/images/pervoposelenec.jpg',
+    category: 'Памятники', qrEnabled: true, city: 'penza',
+    address: 'набережная реки Суры', image: 'images/pervoposelenec.jpg',
     desc: 'Главный символ Пензы: бронзовый воин с конём, копьём и плугом — одновременно защитник и землепашец. Установлен в 1980 году на высоком берегу Суры, рядом — смотровая площадка с панорамой города.'
   },
   {
     id: 'rostok',
     title: 'Обелиск «Росток»',
     category: 'Памятники', qrEnabled: false, city: 'penza',
-    address: 'набережная реки Суры', image: 'assets/images/rostok.jpg',
+    address: 'набережная реки Суры', image: 'images/rostok.jpg',
     desc: '25-метровый монумент трудовой и воинской славы, установленный в 1967 году. Внутри — капсула с посланием потомкам, которую планируют вскрыть в 2067 году.'
   },
   {
     id: 'tolstopyaty',
     title: 'Памятник «Пензяк толстопятый»',
     category: 'Памятники', qrEnabled: false, city: 'penza',
-    address: 'ул. Московская', image: 'assets/images/tolstopyat.jpg',
+    address: 'ул. Московская', image: 'images/tolstopyat.jpg',
     desc: 'Одна из самых необычных и фотографируемых скульптур города, посвящённая местному фольклорному прозвищу и истории 1799 года.'
   },
 
@@ -178,35 +192,35 @@ const SIGHTS = [
     id: 'samara-cosmic',
     title: 'Музей «Самара Космическая»',
     category: 'Музеи', qrEnabled: true, bonus: 60, city: 'samara',
-    address: 'просп. Ленина, 21', image: 'assets/images/cosmos.jpg',
+    address: 'просп. Ленина, 21', image: 'images/cosmos.jpg',
     desc: 'Один из самых узнаваемых музеев города — у входа установлена настоящая списанная ракета-носитель «Союз» высотой 53,4 метра. Внутри — экспозиция о космонавтике, макеты аппаратов и рассказ о быте космонавтов.'
   },
   {
     id: 'samara-art-museum',
     title: 'Самарский областной художественный музей',
     category: 'Музеи', qrEnabled: true, bonus: 50, city: 'samara',
-    address: 'ул. Куйбышева, 92', image: 'assets/images/art_muzeioblast.jpg',
+    address: 'ул. Куйбышева, 92', image: 'images/art_muzeioblast.jpg',
     desc: 'Один из крупнейших региональных художественных музеев России с коллекцией русской живописи XVIII–XX веков, включая работы Айвазовского и Кустодиева, а также произведения русского авангарда.'
   },
   {
     id: 'kurlina-modern',
     title: 'Музей Модерна (Особняк Курлиной)',
     category: 'Музеи', qrEnabled: true, bonus: 50, city: 'samara',
-    address: 'ул. Красноармейская, 15', image: 'assets/images/modern.jpg',
+    address: 'ул. Красноармейская, 15', image: 'images/modern.jpg',
     desc: 'Особняк купца Курлина — один из лучших образцов архитектуры модерна в Поволжье. Внутри воссозданы интерьеры начала XX века, проводятся тематические экскурсии.'
   },
   {
     id: 'stalin-bunker',
     title: 'Бункер Сталина',
     category: 'Музеи', qrEnabled: true, bonus: 65, city: 'samara',
-    address: 'ул. Фрунзе, 167', image: 'assets/images/stalin.jpg',
+    address: 'ул. Фрунзе, 167', image: 'images/stalin.jpg',
     desc: 'Секретный подземный объект глубиной 37 метров, построенный в 1942 году как резервная ставка Верховного главнокомандующего. Посещение — только с экскурсией по предварительной записи.'
   },
   {
     id: 'alabin-museum',
     title: 'Историко-краеведческий музей им. Алабина',
     category: 'Музеи', qrEnabled: true, bonus: 45, city: 'samara',
-    address: 'ул. Ленинская, 142', image: 'assets/images/alabina.jpg',
+    address: 'ул. Ленинская, 142', image: 'images/alabina.jpg',
     desc: 'Один из старейших музеев Поволжья: экспозиции по истории края от археологии до советского периода.'
   },
 
@@ -215,35 +229,35 @@ const SIGHTS = [
     id: 'volga-embankment',
     title: 'Набережная Волги',
     category: 'Памятники', qrEnabled: false, city: 'samara',
-    address: 'вдоль реки Волги', image: 'assets/images/naberejnay.jpg',
+    address: 'вдоль реки Волги', image: 'images/naberejnay.jpg',
     desc: 'Самая длинная благоустроенная набережная в Европе: мощёные дорожки, скульптурные композиции, пляжи и велодорожки вдоль реки.'
   },
   {
     id: 'railway-skyscraper',
     title: 'Железнодорожный вокзал-небоскрёб',
     category: 'Памятники', qrEnabled: false, city: 'samara',
-    address: 'Комсомольская площадь, 1', image: 'assets/images/vokzal.jpg',
+    address: 'Комсомольская площадь, 1', image: 'images/vokzal.jpg',
     desc: 'Самый высокий железнодорожный вокзал в Европе — на 18 этаже работает смотровая площадка с панорамой на город и Волгу.'
   },
   {
     id: 'elephant-house',
     title: 'Дом со слонами',
     category: 'Памятники', qrEnabled: false, city: 'samara',
-    address: 'ул. Ленинградская, 24', image: 'assets/images/Домсослонами2.jpg',
+    address: 'ул. Ленинградская, 24', image: 'images/domsoslonami2.jpg',
     desc: 'Необычная дача купца и художника-любителя Константина Головкина в стиле модерн, украшенная скульптурами слонов. Осмотр возможен только снаружи — здание в частной собственности.'
   },
   {
     id: 'zhigulevskoe-brewery',
     title: 'Жигулёвский пивоваренный завод',
     category: 'Памятники', qrEnabled: false, city: 'samara',
-    address: 'Волжский проспект, 4', image: 'assets/images/pivnoi_zavod.jpg',
+    address: 'Волжский проспект, 4', image: 'images/pivnoi_zavod.jpg',
     desc: 'Историческое здание пивоваренного завода конца XIX века, один из символов промышленной архитектуры Самары. Проводятся экскурсии с дегустацией.'
   },
   {
     id: 'kuibyshev-square',
     title: 'Площадь Куйбышева',
     category: 'Памятники', qrEnabled: false, city: 'samara',
-    address: 'пл. Куйбышева', image: 'assets/images/ploshad.jpeg',
+    address: 'пл. Куйбышева', image: 'images/ploshad.jpeg',
     desc: 'Одна из крупнейших городских площадей Европы, на которой расположен Самарский академический театр оперы и балета в стиле сталинского ампира.'
   },
 ];

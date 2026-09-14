@@ -25,13 +25,13 @@ function eventCardHTML(ev){
 /* ============ RENDER: SIGHT CARD (используется на attractions.html) ============ */
 function sightCardHTML(s){
   const badge = s.qrEnabled
-    ? `<div class="card-bonus">+${s.bonus}</div>`
+    ? `<div class="card-bonus">QR</div>`
     : `<div class="card-bonus soon">Инфо</div>`;
   const imgBlock = s.image
     ? `<img src="${s.image}" alt="${s.title}">`
     : `<svg width="46" height="46" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="18" stroke="var(--accent)" stroke-width="2"/><path d="M10 27L23 14" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/></svg>`;
   return `
-  <div class="card">
+  <button class="card sight-card" type="button" data-sight-id="${s.id}">
     <div class="card-img">
       ${imgBlock}
       ${badge}
@@ -41,7 +41,7 @@ function sightCardHTML(s){
       <h3>${s.title}</h3>
       <div class="card-meta"><span>📍 ${s.address}</span></div>
       <div class="card-desc">${s.desc}</div>
-      ${s.qrEnabled ? `<div class="card-cta">📷 Отсканируйте QR на месте — получите бонус</div>` : ''}
+      ${s.qrEnabled ? `<div class="card-cta">📷 QR-код на месте → открыть карточку</div>` : `<div class="card-cta">Подробнее →</div>`}
     </div>
-  </div>`;
+  </button>`;
 }

@@ -27,6 +27,7 @@ function renderSightsAll(){
   gridEl.innerHTML = list.length
     ? list.map(sightCardHTML).join('')
     : '<div class="empty-state">Ничего не найдено.</div>';
+  if(typeof handleSightCards === 'function') handleSightCards();
 }
 
 document.addEventListener('DOMContentLoaded', () => {

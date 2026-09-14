@@ -3,120 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QR-коды для стенда — Открой город</title>
+<title>QR-коды достопримечательностей — Открой город</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-  .qr-admin-note{
-    max-width:760px; margin:0 auto 28px; background:var(--bg-elevated); border:1px dashed var(--border);
-    border-radius:var(--radius-xl); padding:20px 24px; color:var(--text-muted); font-size:13px; line-height:1.6;
-  }
-  .qr-print-grid{
-    max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:20px;
-  }
-  .qr-card{
-    background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-xl);
-    padding:24px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px;
-  }
-  .qr-card-title{font-family:var(--font-display); font-size:15px; font-weight:800; text-transform:uppercase;}
-  .qr-card-bonus{font-family:var(--font-mono); font-size:12px; color:var(--accent); font-weight:700;}
-  .qr-canvas-wrap{background:#fff; padding:12px; border-radius:12px;}
-  .qr-card-link{font-size:10px; color:var(--text-muted); word-break:break-all; font-family:var(--font-mono);}
-  .qr-print-btn{
-    max-width:1000px; margin:0 auto 24px; display:flex; justify-content:flex-end;
-  }
-  .qr-print-btn button{background:var(--accent); color:var(--accent-text); font-weight:700; font-size:13px; padding:10px 20px; border-radius:999px;}
-  @media print{
-    header, footer, .qr-print-btn, .qr-admin-note{display:none !important;}
-    body{background:#fff !important;}
-    .qr-card{break-inside:avoid; border:1px solid #ccc;}
-  }
+.qr-admin-note{max-width:900px;margin:0 auto 24px;background:var(--bg-elevated);border:1px dashed var(--border);border-radius:var(--radius-xl);padding:20px 24px;color:var(--text-muted);font-size:13px;line-height:1.6}
+.qr-base{max-width:900px;margin:0 auto 28px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.qr-base label{font-size:12px;font-weight:800;text-transform:uppercase}
+.qr-base input{flex:1;min-width:260px;background:var(--bg-elevated-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;color:var(--text);font-family:var(--font-mono);font-size:12px;outline:none}
+.qr-base input:focus{border-color:var(--accent)}
+.qr-print-btn{max-width:900px;margin:0 auto 24px;display:flex;justify-content:flex-end}
+.qr-print-btn button{background:var(--accent);color:var(--accent-text);font-weight:700;font-size:13px;padding:10px 20px;border-radius:999px}
+.qr-print-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:20px}
+.qr-card{background:#fff;color:#111;border:1px solid #ddd;border-radius:20px;padding:24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;break-inside:avoid}
+.qr-card-title{font-family:var(--font-display);font-size:15px;font-weight:800;text-transform:uppercase;line-height:1.25}
+.qr-card-address{font-size:11px;color:#666;min-height:28px}
+.qr-canvas-wrap{background:#fff;padding:10px;border-radius:12px}
+.qr-card-link{font-size:9px;color:#777;word-break:break-all;font-family:var(--font-mono)}
+.qr-card-note{font-size:10px;color:#555;margin-top:2px}
+@media(max-width:700px){.qr-print-grid{grid-template-columns:1fr}}
+@media print{header,footer,.qr-admin-note,.qr-base,.qr-print-btn{display:none!important}body{background:#fff!important}.section{padding-top:10px!important}.qr-print-grid{max-width:none;grid-template-columns:repeat(2,1fr);gap:12px}.qr-card{border:1px solid #bbb;border-radius:8px;padding:18px}.qr-canvas-wrap{padding:6px}.qr-card-link{font-size:7px}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="header-inner">
-    <a class="logo" href="index.html">
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <circle cx="13" cy="13" r="10.5" stroke="var(--text)" stroke-width="2.4"/>
-        <path d="M4 17L13 8" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
-        <path d="M7.5 19.5L15.5 9.5" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/>
-      </svg>
-      <span>ОТКРОЙ ГОРОД</span>
-    </a>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="events.html">Мероприятия</a>
-      <a href="cabinet.html">Мои бонусы</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <div class="section">
-    <div class="section-head">
-      <h2>QR-коды для стенда</h2>
-      <p>Служебная страница для организатора. Распечатайте или откройте на планшете — участники сканируют код камерой телефона и сразу получают бонус.</p>
-    </div>
-
-    <div class="qr-admin-note">
-      Каждый QR ведёт на адрес вида <code>index.html?scan=ID</code> — при открытии сайт автоматически
-      зачисляет бонус в localStorage посетителя и показывает анимацию с начислением звёзд.
-      Если открыть один и тот же QR повторно с того же телефона — сайт покажет «бонус уже получен».
-      Ссылки собираются от адреса, где сейчас открыта эта страница, так что после публикации на
-      GitHub Pages / Netlify / Vercel просто откройте qr-codes.html уже по боевому адресу — код обновится сам.
-    </div>
-
-    <div class="qr-print-btn"><button onclick="window.print()">🖨️ Распечатать</button></div>
-
-    <div class="qr-print-grid" id="qrGrid"></div>
-  </div>
-</main>
-
-<footer>© 2026 Открой город — служебная страница, не для посетителей сайта.</footer>
-
-<script src="js/data.js"></script>
+<header><div class="header-inner">
+  <a class="logo" href="index.html"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="10.5" stroke="var(--text)" stroke-width="2.4"/><path d="M4 17L13 8" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/><path d="M7.5 19.5L15.5 9.5" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round"/></svg><span>ОТКРОЙ ГОРОД</span></a>
+  <nav><a href="index.html">Главная</a><a href="events.html">Мероприятия</a><a href="attractions.html">Достопримечательности</a><a href="partners.html">Партнёры</a></nav>
+</div></header>
+<main><div class="section">
+  <div class="section-head"><h2>QR-коды достопримечательностей</h2><p>Четыре информационных QR-кода без бонусов. После сканирования открывается модальное окно с карточкой места.</p></div>
+  <div class="qr-admin-note"><b>Важно:</b> перед печатью проверьте адрес сайта. Если страница открыта на опубликованном сайте, адрес подставится автоматически. Если работаете локально, вставьте сюда боевой адрес сайта (например, адрес GitHub Pages), чтобы QR-коды вели на сайт с телефона.</div>
+  <div class="qr-base"><label for="baseUrl">Адрес сайта:</label><input id="baseUrl" type="url" placeholder="https://ваш-сайт.ru/"></div>
+  <div class="qr-print-btn"><button onclick="window.print()">🖨️ Распечатать 4 QR-кода</button></div>
+  <div class="qr-print-grid" id="qrGrid"></div>
+</div></main>
+<footer>© 2026 Открой город — служебная страница QR-кодов.</footer>
+<script src="js/data.js"></script><script src="js/city.js"></script><script src="js/storage.js"></script><script src="js/render.js"></script><script src="js/common.js"></script>
 <script>
-  function buildScanUrl(id){
-    const base = location.href.replace(/qr-codes\.html.*$/, '');
-    return base + 'index.html?scan=' + encodeURIComponent(id);
+const QR_IDS=['naberezhnaya-sputnika','dom-ofitserov','pervoposelenec','muzey-odnoy-kartiny'];
+function getBaseUrl(){
+  const input=document.getElementById('baseUrl');
+  let raw=input.value.trim();
+  if(!raw){
+    raw=location.href.replace(/qr-codes\.html.*$/,'');
+    input.value=raw;
   }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.getElementById('qrGrid');
-    CITIES.forEach(cityMeta => {
-      const activeEvents = EVENTS.filter(e => e.city === cityMeta.id && e.status !== 'soon' && e.bonus);
-      const activeSights = SIGHTS.filter(s => s.city === cityMeta.id && s.qrEnabled && s.bonus);
-      const items = [...activeEvents, ...activeSights];
-      if(!items.length) return;
-
-      const cityHeading = document.createElement('div');
-      cityHeading.style.cssText = 'grid-column:1/-1; font-family:var(--font-display); font-size:16px; font-weight:800; text-transform:uppercase; margin:24px 0 4px;';
-      cityHeading.textContent = cityMeta.label;
-      grid.appendChild(cityHeading);
-
-      items.forEach(ev => {
-        const url = buildScanUrl(ev.id);
-        const card = document.createElement('div');
-        card.className = 'qr-card';
-        card.innerHTML = `
-          <div class="qr-card-title">${ev.title}</div>
-          <div class="qr-card-bonus">+${ev.bonus} ⭐ за визит</div>
-          <div class="qr-canvas-wrap" id="qr-${ev.id}"></div>
-          <div class="qr-card-link">${url}</div>
-        `;
-        grid.appendChild(card);
-        new QRCode(document.getElementById('qr-' + ev.id), {
-          text: url, width: 168, height: 168,
-          colorDark: '#0b0f0b', colorLight: '#ffffff'
-        });
-      });
-    });
+  if(!raw.endsWith('/')) raw+='/';
+  return raw;
+}
+function buildSightUrl(id){return getBaseUrl()+'index.html?sight='+encodeURIComponent(id);}
+function renderQRs(){
+  const grid=document.getElementById('qrGrid'); grid.innerHTML='';
+  QR_IDS.forEach(id=>{
+    const s=SIGHTS.find(x=>x.id===id); if(!s) return;
+    const url=buildSightUrl(id);
+    const card=document.createElement('div'); card.className='qr-card';
+    card.innerHTML=`<div class="qr-card-title">${s.title}</div><div class="qr-card-address">📍 ${s.address}</div><div class="qr-canvas-wrap" id="qr-${id}"></div><div class="qr-card-note">Сканирование → карточка достопримечательности</div><div class="qr-card-link">${url}</div>`;
+    grid.appendChild(card);
+    new QRCode(document.getElementById('qr-'+id),{text:url,width:190,height:190,colorDark:'#0b0f0b',colorLight:'#ffffff'});
   });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('baseUrl').value=location.href.replace(/qr-codes\.html.*$/,'');
+  renderQRs();
+  document.getElementById('baseUrl').addEventListener('change',renderQRs);
+  document.getElementById('baseUrl').addEventListener('keydown',e=>{if(e.key==='Enter')renderQRs()});
+});
 </script>
-</body>
-</html>
+</body></html>
