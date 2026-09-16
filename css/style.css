@@ -419,4 +419,10 @@ body.modal-open{overflow:hidden;}
 .sight-modal-address{font-family:var(--font-mono); color:var(--text-muted); font-size:12px; margin-bottom:18px;}
 .sight-modal-body p{color:var(--text-muted); font-size:15px; line-height:1.7; margin-bottom:18px;}
 .sight-modal-note{font-size:11px; color:var(--text-muted); border-top:1px solid var(--border); padding-top:14px;}
+.sight-modal-now{
+  background:var(--bg-elevated-2); border:1px solid var(--accent); border-radius:var(--radius-lg);
+  padding:16px 18px; margin-bottom:18px;
+}
+.sight-modal-now-label{font-family:var(--font-display); font-size:12px; font-weight:800; text-transform:uppercase; color:var(--accent); letter-spacing:0.5px; margin-bottom:6px;}
+.sight-modal-now-text{font-size:13px; color:var(--text); line-height:1.6;}
 @media(max-width:600px){.sight-modal-image-wrap{height:220px}.sight-modal-body{padding:22px}.sight-modal-card{max-height:94vh}}

@@ -22,6 +22,14 @@ function eventCardHTML(ev){
   </a>`;
 }
 
+/* Обрезает текст описания до N слов для короткого тизера на карточке.
+   Полный текст остаётся только в модальном окне (sight-modal.js). */
+function truncateWords(text, n){
+  const words = text.trim().split(/\s+/);
+  if(words.length <= n) return text;
+  return words.slice(0, n).join(' ') + '…';
+}
+
 /* ============ RENDER: SIGHT CARD (используется на attractions.html) ============ */
 function sightCardHTML(s){
   const badge = s.qrEnabled
@@ -40,8 +48,8 @@ function sightCardHTML(s){
       <span class="cat-tag">${s.category}</span>
       <h3>${s.title}</h3>
       <div class="card-meta"><span>📍 ${s.address}</span></div>
-      <div class="card-desc">${s.desc}</div>
-      ${s.qrEnabled ? `<div class="card-cta">📷 QR-код на месте → открыть карточку</div>` : `<div class="card-cta">Подробнее →</div>`}
+      <div class="card-desc">${truncateWords(s.desc, 15)}</div>
+      <div class="card-cta">Узнать больше →</div>
     </div>
   </button>`;
 }

@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if(cityMeta.status === 'soon'){
     grid.innerHTML = cityInDevelopmentHTML(cityMeta);
   } else {
-    const list = EVENTS.filter(e => e.city === cityMeta.id);
+    const list = EVENTS
+      .filter(e => e.city === cityMeta.id)
+      .slice()
+      .sort((a,b) => (a.sortDate || '9999').localeCompare(b.sortDate || '9999'));
     grid.innerHTML = list.length
       ? list.slice(0,3).map(eventCardHTML).join('')
       : '<div class="empty-state">Пока нет мероприятий в этом городе.</div>';

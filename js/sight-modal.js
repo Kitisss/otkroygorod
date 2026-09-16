@@ -36,6 +36,11 @@ function showSightModal(id){
         <h2 id="sightModalTitle">${sight.title}</h2>
         <div class="sight-modal-address">📍 ${sight.address}</div>
         <p>${sight.desc}</p>
+        ${sight.nowHere ? `
+        <div class="sight-modal-now">
+          <div class="sight-modal-now-label">🔥 Сейчас здесь</div>
+          <div class="sight-modal-now-text">${sight.nowHere}</div>
+        </div>` : ''}
         <div class="sight-modal-note">QR-точка проекта «Открой город» · информационная карточка</div>
       </div>
     </div>`;

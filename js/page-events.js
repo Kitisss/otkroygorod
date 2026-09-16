@@ -27,6 +27,7 @@ function renderEventsAll(){
     const q = searchQuery.trim().toLowerCase();
     list = list.filter(e => e.title.toLowerCase().includes(q) || e.desc.toLowerCase().includes(q) || e.place.toLowerCase().includes(q));
   }
+  list = list.slice().sort((a,b) => (a.sortDate || '9999').localeCompare(b.sortDate || '9999'));
   gridEl.innerHTML = list.length
     ? list.map(eventCardHTML).join('')
     : '<div class="empty-state">Ничего не найдено. Попробуйте другой запрос или категорию.</div>';
