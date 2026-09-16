@@ -24,7 +24,8 @@ function renderEventDetail(id){
         <h4>Как получить бонус</h4>
         <p>На самом мероприятии организатор предоставит QR-код для сканирования — отсканируйте его камерой телефона, и бонус зачислится автоматически. Если QR недоступен, воспользуйтесь промокодом ниже.</p>
         <div class="bonus-pill">🎁 +${ev.bonus} бонусов за визит</div>
-        ${ev.ticketUrl ? `<p style="margin-top:14px;">${ev.ticketNote || ''}</p><a href="${ev.ticketUrl}" class="bonus-pill" style="background:var(--bg-elevated-2); color:var(--text); border:1px solid var(--border); margin-top:8px; display:inline-flex;">🎫 Купить билет</a>` : ''}
+        ${ev.ticketNote ? `<p style="margin-top:14px;">${ev.ticketNote}</p>` : ''}
+        <div style="margin-top:10px;"><button type="button" class="bonus-pill" onclick="return false;" style="cursor:pointer;">🎫 Купить билет</button></div>
       </div>
     </div>
     <div class="promo-box">

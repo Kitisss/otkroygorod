@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Аналитика — Открой город</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body{padding-bottom:60px;}
+  .an-header{
+    padding:26px 28px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+  }
+  .an-header-title{font-family:var(--font-display); font-size:15px; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:10px;}
+  .an-header-title .live-dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:var(--glow); display:inline-block;}
+  .an-select{
+    background:var(--bg-elevated-2); border:1px solid var(--border); border-radius:999px; padding:9px 18px;
+    font-size:13px; color:var(--text-muted); font-family:var(--font-mono);
+  }
+  .an-wrap{max-width:1100px; margin:0 auto; padding:36px 24px 20px;}
+  .an-event-head{margin-bottom:28px;}
+  .an-event-head h1{font-family:var(--font-display); font-size:clamp(24px,4vw,36px); text-transform:uppercase; line-height:1.15; margin-bottom:8px;}
+  .an-event-sub{color:var(--text-muted); font-size:13px; font-family:var(--font-mono);}
+
+  .an-kpi-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-bottom:34px;}
+  @media (max-width:1000px){.an-kpi-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:600px){.an-kpi-grid{grid-template-columns:repeat(2,1fr);}}
+  .an-kpi{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-lg); padding:18px 16px;}
+  .an-kpi-label{font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.4px; margin-bottom:8px; font-family:var(--font-mono);}
+  .an-kpi-value{font-family:var(--font-display); font-size:26px; font-weight:800;}
+  .an-kpi-delta{font-size:11px; color:var(--accent); margin-top:4px; font-family:var(--font-mono);}
+
+  .an-panel{background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-xl); padding:26px; margin-bottom:24px;}
+  .an-panel h3{font-family:var(--font-display); font-size:14px; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:20px;}
+
+  .an-row2{display:grid; grid-template-columns:1.4fr 1fr; gap:24px;}
+  @media (max-width:850px){.an-row2{grid-template-columns:1fr;}}
+
+  /* fill gauge */
+  .an-fill-wrap{display:flex; align-items:center; gap:24px; flex-wrap:wrap;}
+  .an-fill-num{font-family:var(--font-display); font-size:44px; font-weight:900;}
+  .an-fill-num span{font-size:18px; color:var(--text-muted); font-weight:600;}
+  .an-fill-bar{flex:1; min-width:200px; height:14px; background:var(--bg-elevated-2); border-radius:999px; overflow:hidden; border:1px solid var(--border);}
+  .an-fill-bar i{display:block; height:100%; background:linear-gradient(90deg, var(--accent), var(--green)); border-radius:999px;}
+
+  /* daily bar chart */
+  .an-bars{display:flex; align-items:flex-end; gap:6px; height:150px; margin-top:6px;}
+  .an-bar-col{flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;}
+  .an-bar{width:100%; background:var(--bg-elevated-2); border-radius:6px 6px 0 0; position:relative; overflow:hidden;}
+  .an-bar i{position:absolute; bottom:0; left:0; right:0; background:var(--accent); border-radius:6px 6px 0 0;}
+  .an-bar-lbl{font-size:9px; color:var(--text-muted); font-family:var(--font-mono);}
+  .an-bar-col.peak .an-bar i{background:var(--accent); box-shadow:var(--glow);}
+
+  /* funnel */
+  .an-funnel-step{margin-bottom:16px;}
+  .an-funnel-top{display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px;}
+  .an-funnel-top b{font-family:var(--font-mono);}
+  .an-funnel-track{height:12px; background:var(--bg-elevated-2); border-radius:999px; overflow:hidden;}
+  .an-funnel-track i{display:block; height:100%; background:var(--accent); border-radius:999px;}
+  .an-funnel-pct{font-size:11px; color:var(--text-muted); margin-top:4px; font-family:var(--font-mono);}
+
+  /* donut */
+  .an-donut-wrap{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+  .an-donut{
+    width:150px; height:150px; border-radius:50%; flex-shrink:0;
+    background: conic-gradient(
+      var(--accent) 0% 26%,
+      #5AD1E6 26% 57%,
+      #E6C75A 57% 78%,
+      #E68A5A 78% 92%,
+      var(--border) 92% 100%
+    );
+    position:relative;
+  }
+  .an-donut::after{content:''; position:absolute; inset:22px; border-radius:50%; background:var(--bg-elevated);}
+  .an-legend{display:flex; flex-direction:column; gap:9px; font-size:13px;}
+  .an-legend-item{display:flex; align-items:center; gap:8px;}
+  .an-legend-dot{width:10px; height:10px; border-radius:3px; flex-shrink:0;}
+  .an-legend-val{margin-left:auto; color:var(--text-muted); font-family:var(--font-mono); font-size:12px; padding-left:14px;}
+
+  /* traffic sources */
+  .an-src{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .an-src-label{width:150px; font-size:12px; color:var(--text-muted); flex-shrink:0;}
+  .an-src-track{flex:1; height:10px; background:var(--bg-elevated-2); border-radius:999px; overflow:hidden;}
+  .an-src-track i{display:block; height:100%; background:var(--accent);}
+  .an-src-pct{width:44px; text-align:right; font-family:var(--font-mono); font-size:12px;}
+
+  .an-footnote{font-size:11px; color:var(--text-muted); text-align:center; margin-top:20px;}
+</style>
+</head>
+<body>
+
+<div class="an-header">
+  <div class="an-header-title"><span class="live-dot"></span> Открой город · Внутренняя аналитика</div>
+  <div class="an-select">📊 Мероприятие: Женитьба Бальзаминова ▾</div>
+</div>
+
+<div class="an-wrap">
+
+  <div class="an-event-head">
+    <h1>Спектакль «Женитьба Бальзаминова»</h1>
+    <div class="an-event-sub">Театр «Кириллица» · ЦКР «Дом офицеров» · показ 15 июля · зал на 800 мест</div>
+  </div>
+
+  <div class="an-kpi-grid">
+    <div class="an-kpi"><div class="an-kpi-label">Вместимость зала</div><div class="an-kpi-value">800</div><div class="an-kpi-delta">мест</div></div>
+    <div class="an-kpi"><div class="an-kpi-label">Заполняемость</div><div class="an-kpi-value">92%</div><div class="an-kpi-delta">734 из 800</div></div>
+    <div class="an-kpi"><div class="an-kpi-label">Просмотры анонса</div><div class="an-kpi-value">12 480</div><div class="an-kpi-delta">↑ 18% к прошлой постановке</div></div>
+    <div class="an-kpi"><div class="an-kpi-label">Переходы «Купить билет»</div><div class="an-kpi-value">2 150</div><div class="an-kpi-delta">CTR 17,2%</div></div>
+    <div class="an-kpi"><div class="an-kpi-label">Билетов через сайт</div><div class="an-kpi-value">480</div><div class="an-kpi-delta">65% онлайн-продаж</div></div>
+    <div class="an-kpi"><div class="an-kpi-label">Сканирований QR на входе</div><div class="an-kpi-value">612</div><div class="an-kpi-delta">83% зрителей</div></div>
+  </div>
+
+  <div class="an-panel">
+    <h3>Заполняемость зала — показ 15 июля</h3>
+    <div class="an-fill-wrap">
+      <div class="an-fill-num">734<span> / 800 мест</span></div>
+      <div class="an-fill-bar"><i style="width:91.75%;"></i></div>
+    </div>
+  </div>
+
+  <div class="an-row2">
+    <div class="an-panel">
+      <h3>Просмотры анонса по дням (14 дней до показа)</h3>
+      <div class="an-bars" id="anBars"></div>
+    </div>
+
+    <div class="an-panel">
+      <h3>Возраст аудитории</h3>
+      <div class="an-donut-wrap">
+        <div class="an-donut"></div>
+        <div class="an-legend">
+          <div class="an-legend-item"><span class="an-legend-dot" style="background:var(--accent);"></span>18–24 <span class="an-legend-val">26%</span></div>
+          <div class="an-legend-item"><span class="an-legend-dot" style="background:#5AD1E6;"></span>25–34 <span class="an-legend-val">31%</span></div>
+          <div class="an-legend-item"><span class="an-legend-dot" style="background:#E6C75A;"></span>35–44 <span class="an-legend-val">21%</span></div>
+          <div class="an-legend-item"><span class="an-legend-dot" style="background:#E68A5A;"></span>45–54 <span class="an-legend-val">14%</span></div>
+          <div class="an-legend-item"><span class="an-legend-dot" style="background:var(--border);"></span>55+ <span class="an-legend-val">8%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="an-row2">
+    <div class="an-panel">
+      <h3>Воронка конверсии</h3>
+      <div class="an-funnel-step">
+        <div class="an-funnel-top"><span>Просмотры анонса на сайте</span><b>12 480</b></div>
+        <div class="an-funnel-track"><i style="width:100%;"></i></div>
+        <div class="an-funnel-pct">100%</div>
+      </div>
+      <div class="an-funnel-step">
+        <div class="an-funnel-top"><span>Переход по кнопке «Купить билет»</span><b>2 150</b></div>
+        <div class="an-funnel-track"><i style="width:17.2%;"></i></div>
+        <div class="an-funnel-pct">17,2% от просмотров</div>
+      </div>
+      <div class="an-funnel-step">
+        <div class="an-funnel-top"><span>Оформили покупку онлайн</span><b>480</b></div>
+        <div class="an-funnel-track"><i style="width:3.8%;"></i></div>
+        <div class="an-funnel-pct">22,3% от перешедших · 3,8% от просмотров</div>
+      </div>
+      <div class="an-funnel-step" style="margin-bottom:0;">
+        <div class="an-funnel-top"><span>Отсканировали QR на входе</span><b>612</b></div>
+        <div class="an-funnel-track"><i style="width:4.9%;"></i></div>
+        <div class="an-funnel-pct">83% от всех зрителей зала</div>
+      </div>
+    </div>
+
+    <div class="an-panel">
+      <h3>Источники переходов</h3>
+      <div class="an-src"><div class="an-src-label">ВКонтакте / Telegram</div><div class="an-src-track"><i style="width:46%;"></i></div><div class="an-src-pct">46%</div></div>
+      <div class="an-src"><div class="an-src-label">QR на афишах в городе</div><div class="an-src-track"><i style="width:33%;"></i></div><div class="an-src-pct">33%</div></div>
+      <div class="an-src"><div class="an-src-label">Поиск / прямые заходы</div><div class="an-src-track"><i style="width:21%;"></i></div><div class="an-src-pct">21%</div></div>
+    </div>
+  </div>
+
+  <div class="an-footnote">Данные приведены в демонстрационных целях · платформа «Открой город»</div>
+</div>
+
+<script>
+  const days = ['1.07','2.07','3.07','4.07','5.07','6.07','7.07','8.07','9.07','10.07','11.07','12.07','13.07','14.07'];
+  const views = [180,205,195,240,260,305,290,350,410,455,520,610,780,1050];
+  const max = Math.max(...views);
+  const barsEl = document.getElementById('anBars');
+  barsEl.innerHTML = views.map((v,i) => `
+    <div class="an-bar-col ${i===views.length-1 ? 'peak' : ''}">
+      <div class="an-bar" style="height:${(v/max*120).toFixed(0)}px;"><i style="height:100%;"></i></div>
+      <div class="an-bar-lbl">${days[i]}</div>
+    </div>`).join('');
+</script>
+
+</body>
+</html>

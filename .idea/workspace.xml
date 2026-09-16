@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d80b48d-0ef6-4d40-bd8e-adb81da77e9f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/page-events.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/page-events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/page-home.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/page-home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/render.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/render.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/sight-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/sight-modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/page-event.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/page-event.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/page-partners.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/page-partners.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

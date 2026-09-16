@@ -16,7 +16,7 @@ function partnerCardHTML(p){
       ${p.repertoire.map(r => `<span class="repertoire-pill">${r}</span>`).join('')}
     </div>
     <div class="partner-actions">
-      <a href="${p.ticketUrl}" target="_blank" rel="noopener" class="partner-btn-primary">🎫 Купить билет на сайте театра</a>
+      <button type="button" class="partner-btn-primary" onclick="return false;" style="cursor:pointer;">🎫 Купить билет на сайте театра</button>
       <a href="cabinet.html" class="partner-btn-secondary">⭐ Обменять бонусы на билет</a>
     </div>
   </div>`;
